@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>上拉加载demo</title>
+	
+	<style>
+	
+	.box{ 
+		width:100%; 
+		background:#666; 
+	}
+	p {
+		background: #eee;
+		padding: 30px 0;
+	}
+	
+	</style>
+</head>
+<body>
+
+<div class="box">
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+	<p>test</p>
+</div>
+
+
+<script src="jquery.min.js"></script>
+<script type="text/javascript">
+	
+
+// mock数据
+var arr = ['test','test','test','test','test','test','test','test','test','test'];
+	
+window.onscroll = function(event){
+	var screenHeight = window.screen.height;
+	var scrollHeight = document.documentElement.scrollHeight;
+	var scrollTop = document.documentElement.scrollTop;
+
+	if(scrollHeight - (screenHeight + scrollTop) < 10){		
+		
+		console.log('这是下一页数据');
+		//下面就是请求下一页数据的逻辑了，自行发挥
+		 var htmlt = '';
+		 for(var i = 0; i < arr.length; i++){
+			 htmlt = htmlt + '<p>' + arr[i] + '</p>';
+		 }
+
+		 var box = $('.box').html()
+		 $('.box').html(box + htmlt);
+		
+	}
+}
+
+</script>
+</body>
+</html>
